@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TOKO</title>
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/static/css/price-range.css" rel="stylesheet">
+    <link href="/static/css/animate.css" rel="stylesheet">
+	<link href="/static/css/main.css" rel="stylesheet">
+	<link href="/static/css/responsive.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Modak&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <style>
+    .modak-regular {
+  font-family: "Modak", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size:30px;
+}
+.dropdown-menu {
+--bs-dropdown-link-active-bg: transparent;
+ --bs-dropdown-link-active-color: black;
+ --bs-dropdown-link-disabled-color: black;}
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="witdh:100px; background: linear-gradient(to left, #FFDBDB, #F6F8D5);box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);position: sticky;top: 0;z-index: 100; ">
+  <div class="container-fluid">
+    <a class="navbar-brand modak-regular mt-2" href="/">TOKO</a>
+    <button class="navbar-toggler" type="button"  data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           Profile
+          </a>
+
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/login" style="color:#85193C"><strong>LOGIN/SINGUP</strong></a></li>
+            <li><a class="dropdown-item" href="/orders">Orders</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/contact">Contact Us</a></li>
+            <li><a class="dropdown-item" href="/" style="color:#85193C"><strong>LogOut</strong></a></li>
+
+          </ul>
+        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/cart/cart_detail">Cart<span class="badge" style="background:#85193C;color:#fff;font-size:8px;border-radius:10px;">{{request.session.cart|length}}</span></a>
+        </li>
+
+      </ul>
+      <form method="get" action="/search" class="d-flex" role="search">
+        <input class="form-control me-2"  name="query" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn" type="submit" style="width: 150px; border-radius:18px;background-color: transparent;
+    border-color: #85193C;color: #85193C;">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- {% for message in messages %}-->
+<!--        {% if message.tags == 'success' %}-->
+<!--            <div class="container success-message" role="alert" style="background:#A0C878;opacity: 0.5;font-size:20px;font-weight:bold;height:40px;padding-top:5px;text-align:center;">{{ message }}-->
+<!--<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="float:right"></button>-->
+<!--              </div>-->
+<!--        {% elif message.tags == 'error' %}-->
+<!--            <div class="container error-message" role="alert" style="background:#FF6363;opacity: 0.5;font-size:20px;font-weight:bold;height:40px;padding-top:5px;text-align:center;">{{ message}}-->
+<!--<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="float:left"></button></div>-->
+<!--        {% endif %}-->
+
+<!--{% endfor %}-->
+
+
+<body style=" background-color: #c9d6ff;background: linear-gradient(to left,#FFDBDB, #F6F8D5);">
+{% block body %}
+{% endblock %}
+<footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 " style=" border-top: 2px solid;">
+    <div class="col">
+      <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none" aria-label="Bootstrap">
+        <h1 class="text-body-secondary mx-3">TOKO</h1>
+      </a>
+      <p class="text-body-secondary mx-3" >©ANUSHKA 2025</p>
+    </div>
+
+    <div class="col">
+
+    </div>
+
+    <div class="col">
+      <h5>Get to Know Us</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About TOKO</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <h5>Connect with Us</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Facebook</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Twitter</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Instagram</a></li>
+
+      </ul>
+    </div>
+
+    <div class="col">
+      <h5>Let Us Help You</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Your Account</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Returns Centre</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Recalls and Product Safety Alerts</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">100% Purchase Protection</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Help</a></li>
+      </ul>
+    </div>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="/static/js/jquery.js"></script>
+	<script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/jquery.scrollUp.min.js"></script>
+    <script src="/static/js/jquery.prettyPhoto.js"></script>
+    <script src="/static/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container" style="background-color:#fff;height: 550px;width:700px;margin-top:50px;border-radius:55px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+<!--    <h1 style="margin-top: 20px;color: #fff;">Login</h1>-->
+<div class="row signup-form">
+  <form method="post" action="{% url 'register' %}">
+      {% csrf_token %}
+      <div class="col-sm" style="color: #85193C;margin-top:50px;margin-bottom:30px;text-align:center;">
+          <h1 >New User Signup!</h1>
+      </div>
+    <input type="text" name="username" placeholder="Username" required="required" style="border-radius:10px;width:50%;height:40px;background-color: rgb(238, 238, 238);outline:none;margin: 15px auto;" />
+    <input type="text" name="first_name" placeholder="First Name" required="required" style="border-radius:10px;width:50%;height:40px;background-color: rgb(238, 238, 238);outline:none;margin: 15px auto;" />
+    <input type="text" name="last_name" placeholder="Last Name" required="required" style="border-radius:10px;width:50%;height:40px;background-color: rgb(238, 238, 238);outline:none;margin: 15px auto;" />
+
+<input type="email" name="email" placeholder="email" required="required" style="border-radius:10px;width:50%;height:40px;background-color: rgb(238, 238, 238);outline:none;margin: 15px auto;" />
+    <input
+      type="password"
+      name="pass1"
+      placeholder="Password"
+      required="required"
+      style="border-radius:10px;width:50%;height:40px;background-color: rgb(238, 238, 238);outline:none;margin: 15px auto;"
+    />
+       <input
+      type="password"
+      name="pass2"
+      placeholder="Confirm Password"
+      required="required"
+      style="border-radius:10px;width:50%;height:40px;background-color: rgb(238, 238, 238);outline:none;margin: 15px auto;"
+    />
+
+      <button type="submit" class="btn" style="width: 200px; border-radius:18px;background-color:#85193C;color: white;font-size:15px;margin: 15px auto;" >
+     Sign Up
+    </button>
+
+  </form>
+</div>
+
+</div>
+
+{% endblock %}

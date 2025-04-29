@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load cart_tag%}
+{% block body %}
+<div class="container">
+					<div class="product-details"><!--product-details-->
+						<div class="col-sm-5">
+							<div class="view-product">
+								<img src="/{{product.image}}" alt="" />
+							</div>
+
+						</div>
+						<div class="col-sm-7">
+							<div class="product-information" style="background:#fff"><!--/product-information-->
+
+								<h2>{{product.name}}</h2>
+								<span>
+									<span>Rs. {{product.price}}</span>
+									<a href="{% url 'cart_add' product.id %}"><button type="button" class="btn btn-outline-warning mx-3" name="bag">Add to Cart</button></a>
+								</span>
+								<p><b>Availability:</b> {{product.availability}}</p>
+								<p><b>Condition:</b> New</p>
+								<p><b>Brand:</b> E-SHOPPER</p>
+								<a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+							</div><!--/product-information-->
+						</div>
+					</div>
+</div>
+
+{% endblock %}

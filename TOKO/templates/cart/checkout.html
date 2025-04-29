@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% load cart_tag%}
+{% block body %}
+<form method="post" action="{% url 'placeorder' %}">
+    {% csrf_token %}
+<div class="container">
+		<div class="shopper-informations">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="shopper-info">
+							<h2 style="margin-bottom:10px;">Contact Detials</h2>
+							<div>
+								<input type="text" placeholder="Name *" name="name" value="{{user.username}}"  readonly style="margin-top:4px;">
+								<input type="hidden" placeholder="Name *" name="firstname" value="{{user.first_name}}"  required="required" style="margin-top:4px;">
+								<input type="hidden" placeholder="Name *" name="lastname" value="{{user.last_username}}"  required="required" style="margin-top:4px;">
+								<input type="text" placeholder="Mobile No. *" name="mobile" required="required">
+                                <input type="hidden" placeholder="Mobile No. *" name="totalamt" value="{{cart_total_amount}}" >
+
+							</div>
+
+							<p>Bill To</p>
+
+								<div>
+                                    <input type="text" placeholder="Zip / Postal Code *" name="pincode" required="required" >
+									<input type="text" placeholder="Address(House No,Building,Street,Area) *" name="address" required="required" >
+									<input type="text" placeholder="Locality/Town *" name="town" required="required" >
+                                    <select name="state" required="required">
+                                        <option>--States *--</option>
+                                        <option value="AP">Andhra Pradesh</option>
+                                        <option value="AR">Arunachal Pradesh</option>
+                                        <option value="AS">Assam</option>
+                                        <option value="BR">Bihar</option>
+                                        <option value="CT">Chhattisgarh</option>
+                                        <option value="GA">Gujarat</option>
+                                        <option value="HR">Haryana</option>
+                                        <option value="HP">Himachal Pradesh</option>
+                                        <option value="JK">Jammu and Kashmir</option>
+                                        <option value="GA">Goa</option>
+                                        <option value="JH">Jharkhand</option>
+                                        <option value="KA">Karnataka</option>
+                                        <option value="KL">Kerala</option>
+                                        <option value="MP">Madhya Pradesh</option>
+                                        <option value="MH">Maharashtra</option>
+                                            <option value="MN">Manipur</option>
+                                            <option value="ML">Meghalaya</option>
+                                        <option value="MZ">Mizoram</option>
+                                        <option value="NL">Nagaland</option>
+                                        <option value="OR">Odisha</option>
+                                        <option value="PB">Punjab</option>
+                                        <option value="RJ">Rajasthan</option>
+                                        <option value="SK">Sikkim</option>
+                                        <option value="TN">Tamil Nadu</option>
+                                        <option value="TG">Telangana</option>
+                                        <option value="TR">Tripura</option>
+                                        <option value="UT">Uttarakhand</option>
+                                        <option value="UP">Uttar Pradesh</option>
+                                        <option value="WB">West Bengal</option>
+                                        <option value="AN">Andaman and Nicobar Islands</option>
+                                        <option value="CH">Chandigarh</option>
+                                        <option value="DN">Dadra and Nagar Haveli</option>
+                                        <option value="DD">Daman and Diu</option>
+                                        <option value="DL">Delhi</option>
+                                        <option value="LD">Lakshadweep</option>
+                                        <option value="PY">Puducherry</option>
+                                </select>
+
+
+								</div>
+                        <p class="my-4">Address Type</p>
+                            <input type="radio" name="addresstype" value="Home" ><label>Home</label>
+                            <input type="radio" name="addresstype" value="Office"><label>Office</label>
+						</div>
+
+					</div>
+
+                        <div class="col-sm-6" style="padding-left:60px;">
+
+							<h2>Your Order</h2>
+                            <br>
+                            <table class="table">
+                              <thead>
+                                <tr>
+                               <th scope="col">Product</th>
+                                  <th scope="col">Total</th>
+
+                                </tr>
+                              </thead>
+                              <tbody>
+                              {% for key,value in request.session.cart.items %}
+                                <tr>
+                                  <td>{{value.name|truncatewords:8}} X{{value.quantity}}</td>
+                                  <td>{{value.price}}</td>
+                                </tr>
+                              {% endfor %}
+                              </tbody>
+                                <tr>
+                                  <td>Shipping Charge</td>
+                                  <td>Free</td>
+                                </tr>
+                                <tr>
+                                  <td><strong>Total</strong></td>
+                                    <td><strong>{{cart_total_amount}}</strong></td>
+                                </tr>
+
+                            </table>
+
+					</div>
+				</div>
+			</div>
+    <div class="container" style="padding-top:50px;">
+    <div class="col-sm-6">
+        <a href="{% url 'cart_clear' %}"><button class="btn btn-outline-danger" name="cancel" type="button" style="width: 100%;border-color:#85193C;color:#85193C;font-size:15px;">Cancel</button></a>
+    </div>
+        <div class="col-sm-6">
+           <a href="#"><button class="btn" type="submit" name="placeorder" style="width: 100%;background-color:#85193C;color:#fff;font-size:15px;">Place Order</button></a>
+        </div>
+        </div>
+</div>
+</form>
+{% endblock %}

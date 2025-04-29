@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="album py-5">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          {% if product|length < 1 %}
+          <img src="/static/img/error.jpeg" alt="page not found" style="display:block;margin:auto;width:50%">
+          <p style="display:block;margin:auto;font-size:20px">
+              Oops! Page not found. It looks like the page you're looking for doesn't exist. Let's get you back <a href="/" style="text-decoration:none;color:black;"><strong>home!</strong></a></p>
+
+              {% endif %}
+        {% for prod in product %}
+        <div class="col">
+          <div class="card shadow-sm">
+           <img src="{{prod.image}}" style="width='100%' height='225'" class="d-block" alt="..." height="500px">
+            <div class="card-body ">
+              <h4 class="card-text mx-3">{{prod.name}}</h4>
+              <h5 class="card-text mx-3">Rs. {{prod.price}}</h5>
+              <div class="d-flex justify-content-between align-items-center">
+
+                <div class="btn-group">
+                  <a href="product/{{prod.id}}/"><button type="button" class="btn btn-outline-secondary mx-3" name="view">View</button></a>
+                </div>
+                <div class="btn-group">
+                  <a href="{% url 'cart_add' prod.id %}"><button type="button" class="btn btn-outline-warning mx-3" name="bag">Add to Cart</button></a>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+</div>
+
+
+{% endblock %}

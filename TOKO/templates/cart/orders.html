@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load cart_tag%}
+{% block body %}<section id="cart_items">
+		<div class="container"  style="background:#fff;">
+
+			<div class="table-responsive cart_info">
+				<table class="table table-condensed" style="width: 900px;height: 200px;">
+					<thead>
+
+						<tr class="cart_menu">
+							<td class="image" ></td>
+							<td class="description" style="text-align:center;">Item</td>
+							<td class="price" style="text-align:center;">Price</td>
+							<td class="quantity" style="text-align:center;">Quantity</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							{% for order in orders %}
+							<td class="cart_product">
+								<a href=""><img src="{{order.image}}" alt="" style="width: 150px;height: 150px;object-fit: cover;"></a>
+							</td>
+							<td class="cart_description" style="vertical-align: middle;text-align:center;">
+								<p style="font-size:18px">{{order.product}}</p>
+<!--								<p>Web ID: 1089772</p>-->
+							</td>
+							<td class="cart_price" style="vertical-align: middle;text-align:center;">
+								<p>₹ {{order.price}}</p>
+							</td>
+							<td class="cart_quantity" style="vertical-align: middle;text-align:center;">
+
+								<p class="cart_quantity_input" style="float:none;">{{order.quantity}}</p>
+
+							</td>
+
+							<td class="cart_total" style="vertical-align: middle;text-align:center;">
+								<p class="cart_total_price">₹ {{order.order.payment}}</p>
+							</td>
+						</tr>
+{% endfor%}
+					</tbody>
+				</table>
+			</div>
+		</div>
+</section>
+
+{% endblock %}

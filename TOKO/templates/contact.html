@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us{% endblock %}
+{% block body %}
+
+<div class="container-fluid ">
+  <img src="static/img/contact-bg.jpg" style="width:100%;height:600px">
+
+ </div>
+<div class="container mb-3 py-4">
+  <h3 class="text-center">Contact Us</h3>
+  <form method="post" action="/contact">
+    {% csrf_token %}
+  <div class="mb-3">
+  <label for="name" class="form-label" ><strong>Name</strong></label>
+  <input type="text" class="form-control" id="name" name="name" placeholder="UserName" style="background-color: rgb(238, 238, 238);outline:none;">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label"><strong>Email address</strong></label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="name@example.com" style="background-color: rgb(238, 238, 238);outline:none;">
+</div>
+  <div class="mb-3">
+    <label for="phoneno" class="form-label"><strong>Mobile Number</strong></label>
+  <input type="text" class="form-control" id="phoneno" name="phoneno" placeholder="Mobile Number" style="background-color: rgb(238, 238, 238);outline:none;">
+</div>
+<div class="mb-3">
+  <label for="desc" class="form-label"><strong>tell me your problem<strong></strong></label>
+  <textarea class="form-control" id="desc" name="desc" rows="3" style="background-color: rgb(238, 238, 238);outline:none;"></textarea>
+</div>
+    <button class="btn btn-primary" style="width: 150px; border-radius:18px;background-color: #512da8;color: #fff;;
+    border: 1px solid transparent;" >Submit</button>
+    </form>
+</div>
+
+{% endblock %}
